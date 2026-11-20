@@ -58,10 +58,10 @@ for yv, p in placed:
     a1.annotate(p, xy=(18.4, yv), fontsize=6.5, va="center",
                 color=COLOUR[p], annotation_clip=False)
 a1.axvline(BOUND, color="#333333", lw=1.0)
-a1.set_ylabel("AUROC"); a1.set_xlim(0.4,18.6); a1.set_ylim(0.855,0.985)
+a1.set_ylabel("AUROC"); a1.set_xlim(0.4,18.6); a1.set_ylim(0.855,0.992)
 a1.set_xticks(g.x); a1.set_xticklabels([]); a1.tick_params(axis="x", length=0)
-a1.text(5.0, 0.979, "Pooled variant", ha="center", fontsize=7.5, weight="bold")
-a1.text(14.0, 0.979, "Equal gene",   ha="center", fontsize=7.5, weight="bold")
+a1.text(5.0, 0.986, "Pooled variant", ha="center", fontsize=7.5, weight="bold")
+a1.text(14.0, 0.986, "Equal gene",   ha="center", fontsize=7.5, weight="bold")
 for s in ("top","right"): a1.spines[s].set_visible(False)
 
 a2.bar(g.x, g.rev_minus_am, width=0.62,

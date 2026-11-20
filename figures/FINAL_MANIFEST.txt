@@ -17,7 +17,7 @@ All counts and all gene-clustered inference use the frozen Step-10A
 MANE-informed mapping (225,208/15,249 -> 187,155/13,599 -> 53,552/1,981).
 
 SHA256
-a67823fd4bb19331fe7c920f35f65a3f16d009c13cb69af5683232f7e43ac313  Fig/fig2.pdf
+6fed396f2b5224eb95c8c31bdf904c0be6c60d02c6d98e47360d5ce997b4f82e  Fig/fig2.pdf
 286f829771b01e5e5cd704f3d5b701cdeb4cdcaf805e2efa7da27ef56775411c  Fig/fig3.pdf
 3b8e9015d683ca4d3242366b59feeffd4d655fb0e5bf25ef878933306ceed81e  Fig/fig4.pdf
 cea42f79ba95454447ac8e27d3a056f34e81b58d505e615f985172a1cd99b392  Fig/fig5.pdf
