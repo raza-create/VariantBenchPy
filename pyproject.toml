@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "variantbenchpy"
-version = "0.1.0"
-description = "A coverage-aware and bias-aware benchmarking framework for variant-effect predictors."
+version = "1.0.1"
+description = "Benchmark design as a measurable source of uncertainty in variant-effect predictor evaluation."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -23,14 +23,14 @@ dependencies = [
     "pandas>=1.5",
     "scipy>=1.9",
     "scikit-learn>=1.1",
+    "pyarrow>=12",
+    "matplotlib>=3.6",
 ]
 
 [project.optional-dependencies]
 report = ["matplotlib>=3.6", "jinja2>=3.1"]
 dev = ["pytest>=7.0", "pytest-cov>=4.0", "ruff>=0.1"]
 
-[project.scripts]
-variantbench = "variantbenchpy.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

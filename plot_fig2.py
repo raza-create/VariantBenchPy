@@ -83,9 +83,13 @@ for i in range(0, 18, 3):
             color="#AAAAAA", lw=0.5, clip_on=False)
 
 lo, hi = -0.018, 0.036
-if BOOT.exists():
-    d = pd.read_parquet(BOOT)
-    d = (d["REVEL"] - d["AlphaMissense"]).to_numpy()
+BOOT_CSV = SRC / "Fig2b_bootstrap_draws.csv"
+if BOOT.exists() or BOOT_CSV.exists():
+    if BOOT.exists():
+        d = pd.read_parquet(BOOT)
+        d = (d["REVEL"] - d["AlphaMissense"]).to_numpy()
+    else:
+        d = pd.read_csv(BOOT_CSV)["revel_minus_alphamissense"].to_numpy()
     from scipy.stats import gaussian_kde
     xs = np.linspace(lo, hi, 400); dn = gaussian_kde(d)(xs)
     bx.fill_between(xs, 0.08, 0.08 + dn/dn.max()*0.42,

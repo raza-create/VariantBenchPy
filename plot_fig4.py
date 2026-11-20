@@ -31,8 +31,12 @@ ALLP = 0.0496
 assert abs(lopo.am_minus_revel.min()-0.0342)<0.0005
 print("guards passed")
 
-dates = pd.to_datetime(
-    pd.read_parquet("data/benchmark_with_temporal.parquet")["first_in_clinvar"])
+_PQ = pathlib.Path("data/benchmark_with_temporal.parquet")
+if _PQ.exists():
+    _y = pd.to_datetime(pd.read_parquet(_PQ)["first_in_clinvar"]).dt.year.dropna().astype(int)
+    YEARS = _y.value_counts().sort_index()
+else:
+    YEARS = pd.read_csv(SRC/"Fig4a_year_counts.csv").set_index("year")["variants"]
 
 fig = plt.figure(figsize=(6.85,4.9))
 gs  = GridSpec(2,6, height_ratios=[1.0,1.05], figure=fig)
@@ -42,9 +46,8 @@ fig.subplots_adjust(left=0.085,right=0.975,top=0.93,bottom=0.115,
                     hspace=0.72,wspace=1.30)
 
 # (a) First-in-ClinVar
-yrs = dates.dt.year.dropna().astype(int)
-a.hist(yrs, bins=range(yrs.min(), yrs.max()+2), color="#C4C4C4",
-       edgecolor=MID, lw=0.4, align="left", zorder=2)
+a.bar(YEARS.index, YEARS.values, width=1.0, color="#C4C4C4",
+      edgecolor=MID, lw=0.4, zorder=2)
 for yr,lab in [(2021.82,"EVE"),(2023.73,"AM")]:
     a.axvline(yr, color=INK, lw=0.9, ls=(0,(3,2)), zorder=3)
     a.annotate(lab, xy=(yr,1.02), xycoords=("data","axes fraction"),

@@ -10,8 +10,8 @@ Cohort,Unique ClinVar VariationIDs,"225,208",
 Cohort,Variants mapping to >1 gene,"24,271",10.8% of cohort
 Exclusions,VUS / not provided,"2,139,383",
 Exclusions,Conflicting P/B classifications,"110,991",
-Exclusions,Missing classification,"57,382",
-Exclusions,Other (risk factor / drug response / association),"2,310",
+Exclusions,No germline classification field,"57,382",691 carry only an oncogenicity or somatic clinical-impact classification
+Exclusions,Other or compound classifications,"2,310","1,290 risk factor/drug response/association/affects/other only; 707 uncertain, conflicting or unclassified with a secondary term; 313 P/LP (240) or B/LB (73) with a secondary term, excluded by exact match"
 Exclusions,Total excluded records,"2,310,066",
 Class balance,Pathogenic / Likely pathogenic,"71,926 (31.9%)",
 Class balance,Benign / Likely benign,"153,282 (68.1%)",
