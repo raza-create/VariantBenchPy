@@ -1,0 +1,44 @@
+VariantBenchPy - supplementary material
+======================================================
+Assembled 2026-11-18
+
+FIGURES
+  Figure S1  Winner retention in simulated benchmarks under five scenarios
+            source: FigureS1_simulation_scenarios.pdf/.png
+            sha256: b50e074e452f93e5a22c842519bad555f1f1b2da1a68d676a44e0eb37aa44617
+  Figure S2  False-positive rate of naive vs cross-fitted inference; power
+            source: FigureS2_simulation_operating_characteristics.pdf/.png
+            sha256: 9867989f41f19da85ffa3fc7b89184d6fef39f36dd02af2dae0e5bef62cf030c
+  Figure S3  ClinVar cohort construction
+            source: FigureS3_clinvar_cohort.pdf/.png
+            sha256: 69816cb366f64643b4b5cdedc8ec25b794fec5493a38b7babe055ade82313381
+  Figure S4  Transcript resolution of SIFT and PolyPhen-2 scores
+            source: FigureS4_transcript_resolution.pdf/.png
+            sha256: 8a34892b5a0f82a01d605da92aaa4068e94e11eb9f094b1630c16c992ed6495f
+  Figure S5  EVE mapping cascade and coverage by class and review status
+            source: FigureS5_eve_mapping.pdf/.png
+            sha256: aa827c36c7d658fe6efe501d6f9ff1063c28e06d4dda3072f9ff673b74372618
+  Figure S6  Reliability of the six-predictor layer
+            source: FigureS6_six_predictor_reliability.pdf/.png
+            sha256: ecbadfd34e62e475eabb89e160c6452f064a05a509555687a374afed03fe6f2b
+
+TABLES
+  Table S1   Predictor provenance and checksums
+            6 data rows; source: TableS1_predictor_provenance.csv
+            sha256: 53f12fc4560622dc038a47b7bbc33bf2cb8c9d7d4c2899f345715fa745d97ded
+  Table S2   ClinVar benchmark integrity
+            44 data rows; source: TableS2_clinvar_cohort_integrity.csv
+            sha256: a1af6648bc83acc5f4c17451a5fc1d34d0f1662b47c9ea733fd849acc0d6e62e
+  Table S3   The 18 benchmark designs with each predictor's AUROC
+            18 data rows; source: TableS3_benchmark_specifications.csv
+            sha256: 695683db5fc1752e80eba1b26abf8d708d4637d1f83b745f91c0a9d3b035b46e
+  Table S4   Per-assay DMS results
+            36 data rows; source: TableS4_DMS_assay_results.csv
+            sha256: c904ec3e53a50b274ef85c25f46ab3c9215c98c01e1af0ec1ab1f9802b287a79
+
+KNOWN GAPS
+  Table S3 contains the 18 designs of the FIVE-predictor layer only.
+  Section 6 promises the designs of each layer; the six-predictor
+  grid has no artefact on disk.
+  Table S1 has NA checksums for AlphaMissense and REVEL, and gives
+  local file mtimes where access dates are intended.

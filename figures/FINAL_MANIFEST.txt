@@ -1,0 +1,38 @@
+FROZEN MAIN FIGURES
+===================
+Regenerated 2026-11-18. Supersedes the 2026-09-08 set in figures/.
+
+Fig/fig2.pdf / .png   Design dependence (18-design grid, Table S3 ordering;
+                      2,000-replicate gene-clustered bootstrap)
+Fig/fig3.pdf / .png   Coverage selection (PAIRED gene-clustered bootstrap,
+                      2,000 replicates; supersedes the independent-combination
+                      intervals produced by step11_selection.py)
+Fig/fig4.pdf / .png   Temporal and DMS validation (both landmarks; panel f
+                      protein-weighted)
+Fig/fig5.pdf / .png   Pair decomposition (between-gene share 99.97%)
+
+Figure 1 has not been regenerated.
+
+All counts and all gene-clustered inference use the frozen Step-10A
+MANE-informed mapping (225,208/15,249 -> 187,155/13,599 -> 53,552/1,981).
+
+SHA256
+1e0f750cebe83d59ea10ea28abf3ee91f31433ef690ff36827a7c9026a09dd6e  Fig/fig2.pdf
+0b0a8c5d75964f0a7737fc11da59f6fcf8a14c1371add11e01132f37442fbd1a  Fig/fig3.pdf
+b3c8845664b9b4289122bd9ef6a621665daa1f15ef69908d532b5243bd7ac030  Fig/fig4.pdf
+fc4c162866e1df2d509ea994819210a374733a66941dd5c2a836b1dd5cac02cb  Fig/fig5.pdf
+
+FROZEN SUPPLEMENTARY FIGURES
+============================
+b50e074e452f93e5a22c842519bad555f1f1b2da1a68d676a44e0eb37aa44617  figures/FigureS1_simulation_scenarios.pdf
+9867989f41f19da85ffa3fc7b89184d6fef39f36dd02af2dae0e5bef62cf030c  figures/FigureS2_simulation_operating_characteristics.pdf
+7ebe741ed6b0f78a1181070f66fd48cd5ede40d14f9d73470ba027cfeedf54f1  figures/FigureS3_clinvar_cohort.pdf
+8a34892b5a0f82a01d605da92aaa4068e94e11eb9f094b1630c16c992ed6495f  figures/FigureS4_transcript_resolution.pdf
+aa827c36c7d658fe6efe501d6f9ff1063c28e06d4dda3072f9ff673b74372618  figures/FigureS5_eve_mapping.pdf
+ecbadfd34e62e475eabb89e160c6452f064a05a509555687a374afed03fe6f2b  figures/FigureS6_six_predictor_reliability.pdf
+
+NOTE (2026-11-19): the CALIBRATION & POWER block of data/step12_audit.txt
+reports power of ~43% (80 genes) and ~73% (160 genes). These are stale.
+The verified values are in data/step9_verification_grid.csv (200 replicates
+per cell): 18.5%, 36.0% and 75.5% at 40, 80 and 160 genes, as reported in
+the manuscript and Supplementary Fig. S2.

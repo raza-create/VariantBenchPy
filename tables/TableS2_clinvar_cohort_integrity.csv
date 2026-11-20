@@ -1,0 +1,45 @@
+Section,Item,Value,Note
+Source,ClinVar release,2026-08-16,
+Source,Genome build,GRCh38,
+Source,Variant class,missense_variant (MC field),
+Source,Label source,ClinVar germline aggregate classification (CLNSIG),somatic and oncogenicity assertions excluded from labels
+Cohort,Labeled P/LP or B/LB missense variants,"225,208",
+Cohort,Unique genomic keys (chr:pos:ref:alt),"225,208",duplicates = 0
+Cohort,Unique ClinVar AlleleIDs,"225,208",
+Cohort,Unique ClinVar VariationIDs,"225,208",
+Cohort,Variants mapping to >1 gene,"24,271",10.8% of cohort
+Exclusions,VUS / not provided,"2,139,383",
+Exclusions,Conflicting P/B classifications,"110,991",
+Exclusions,No germline classification field,"57,382",691 carry only an oncogenicity or somatic clinical-impact classification
+Exclusions,Other or compound classifications,"2,310","1,290 risk factor/drug response/association/affects/other only; 707 uncertain, conflicting or unclassified with a secondary term; 313 P/LP (240) or B/LB (73) with a secondary term, excluded by exact match"
+Exclusions,Total excluded records,"2,310,066",
+Class balance,Pathogenic / Likely pathogenic,"71,926 (31.9%)",
+Class balance,Benign / Likely benign,"153,282 (68.1%)",
+Review status,0-star,"17,459",
+Review status,1-star,"142,306",
+Review status,2-star,"60,554",
+Review status,3-star,"4,881",
+Review status,4-star,8,
+Gene assignment,Primary-gene rule,"MANE-informed, gene-name level","ClinVar VCF exposes no MANE transcript field; assignment is by MANE Select GENE NAME, not variant-level MANE transcript consequence"
+Gene assignment,MANE-informed assignment,"224,855 (99.8%)",
+Gene assignment,GENEINFO fallback,353 (0.2%),
+Gene assignment,Unresolved primary gene,0,
+Gene assignment,Frozen gene clusters,"15,249",used for all gene-clustered inference in Steps 11-15
+Somatic / oncogenicity,ONC (ONCDN) annotated,259,
+Somatic / oncogenicity,SCI (SCIDN) annotated,319,
+Somatic / oncogenicity,Both ONC and SCI,98,
+Somatic / oncogenicity,Unique ONC or SCI,480,single definition: ONCDN and/or SCIDN; no double counting
+Gene eligibility,Genes with >=5 variants,"8,332",
+Gene eligibility,Genes with >=10 variants,"4,763",
+Gene eligibility,Genes with >=20 variants,"2,335",
+Gene eligibility,Genes with both classes,"4,202",
+Gene eligibility,Genes with both classes AND >=10 variants,"2,973","full cohort (225,208 variants, 15,249 genes); NOT the analysis population"
+Analysis populations,Variant-level (available-case),"225,208 / 15,249 genes",
+Analysis populations,Gene-aware clustered,"225,208 / 15,249 gene clusters",
+Analysis populations,"Within-gene AUROC, full cohort (>=10 var, both classes)","2,973 genes",full cohort; see next row for the analysed population
+Analysis populations,"Within-gene AUROC, five-predictor layer (>=10 var, both classes)","2,517 genes","187,155 variants / 13,599 genes; the population used in Fig. 5 and section 3.5"
+Analysis populations,>=1-star,"207,749 variants",
+Analysis populations,>=2-star,"65,443 variants",
+Analysis populations,Multi-gene excluded,"200,937 variants","excludes 24,271"
+Analysis populations,Somatic/onco excluded,"224,728 variants",excludes 480
+Analysis populations,GENEINFO-fallback excluded,"224,855 variants",excludes 353
