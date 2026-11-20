@@ -11,7 +11,7 @@ AM, RV = "#0072B2", "#D55E00"
 COL = {"AlphaMissense":AM,"REVEL":RV,"CADD":"#4D4D4D","SIFT":"#8A8A8A","PolyPhen-2":"#B8B8B8"}
 INK, MID, LIGHT = "#1A1A1A", "#666666", "#AAAAAA"
 
-plt.rcParams.update({"pdf.fonttype":42,"ps.fonttype":42,"font.size":7,
+plt.rcParams.update({"font.family":"DejaVu Sans","pdf.fonttype":42,"ps.fonttype":42,"font.size":7,
     "axes.labelsize":7.5,"xtick.labelsize":7,"ytick.labelsize":7,
     "legend.fontsize":6.5,"axes.linewidth":0.6})
 
@@ -53,7 +53,7 @@ for yr,lab in [(2021.82,"EVE"),(2023.73,"AM")]:
     a.annotate(lab, xy=(yr,1.02), xycoords=("data","axes fraction"),
                ha="center", va="bottom", fontsize=6.0, color="#333333")
 a.set_xlabel("Year first in ClinVar"); a.set_ylabel("Variants (thousands)")
-a.set_yticklabels([f"{t/1000:.0f}" for t in a.get_yticks()])
+from matplotlib.ticker import FuncFormatter; a.yaxis.set_major_formatter(FuncFormatter(lambda t, _: f"{t/1000:.0f}"))
 for s in ("top","right"): a.spines[s].set_visible(False)
 
 # (b) temporal delta, two landmarks
@@ -121,7 +121,7 @@ e.annotate(f"all 32 proteins, {ALLP:.3f}", xy=(3,ALLP), xytext=(0,-11),
 e.set_xlim(0,33); e.set_ylim(0,0.075)
 e.set_xlabel("Protein removed (sorted)")
 e.set_ylabel("$\\Delta\\rho$ (AlphaMissense $-$ REVEL)", fontsize=7.0)
-e.annotate("AlphaMissense first after\nevery single removal", xy=(0.06,0.97), va="top",
+e.annotate("AlphaMissense first after\nevery single removal", xy=(0.97,0.04), va="bottom", ha="right",
            xycoords="axes fraction", fontsize=6.0, color="#555555")
 for s in ("top","right"): e.spines[s].set_visible(False)
 

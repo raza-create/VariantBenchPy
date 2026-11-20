@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "variantbenchpy"
-version = "1.0.1"
+version = "1.0.2"
 description = "Benchmark design as a measurable source of uncertainty in variant-effect predictor evaluation."
 readme = "README.md"
 requires-python = ">=3.10"

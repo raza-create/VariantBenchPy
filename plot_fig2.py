@@ -13,7 +13,7 @@ AM, RV = "#0072B2", "#D55E00"
 PREDS  = ["AlphaMissense","REVEL","CADD","SIFT","PolyPhen-2"]
 COLOUR = {"AlphaMissense":AM,"REVEL":RV,"CADD":"#4D4D4D","SIFT":"#8A8A8A","PolyPhen-2":"#B8B8B8"}
 
-plt.rcParams.update({"pdf.fonttype":42,"ps.fonttype":42,"font.size":7,
+plt.rcParams.update({"font.family":"DejaVu Sans","pdf.fonttype":42,"ps.fonttype":42,"font.size":7,
     "axes.labelsize":7.5,"xtick.labelsize":7,"ytick.labelsize":7,
     "legend.fontsize":6.5,"axes.linewidth":0.6})
 
@@ -42,10 +42,12 @@ inner = outer[0,:].subgridspec(2, 1, height_ratios=[2.0,1.0], hspace=0.10)
 a1, a2 = fig.add_subplot(inner[0]), fig.add_subplot(inner[1])
 bx = fig.add_subplot(outer[1,0:3]); cx = fig.add_subplot(outer[1,3:5])
 fig.subplots_adjust(left=0.085, right=0.90, top=0.95, bottom=0.095,
-                    hspace=0.30, wspace=0.75)
+                    hspace=0.30, wspace=1.05)
 
 for p in PREDS:
-    a1.plot(g.x, g[p], "-o", color=COLOUR[p], lw=1.0, ms=2.6, mec="none")
+    for i0 in range(0, 18, 3):
+        blk = g.iloc[i0:i0+3]
+        a1.plot(blk.x, blk[p], "-o", color=COLOUR[p], lw=1.0, ms=2.6, mec="none")
 ends = sorted(((g[p].iloc[-1], p) for p in PREDS), reverse=True)
 SEP, placed = 0.0075, []
 for yv, p in ends:
@@ -72,14 +74,14 @@ a2.set_xticks(g.x); a2.set_xticklabels([])
 for s in ("top","right"): a2.spines[s].set_visible(False)
 SHORT = {"all":"All", ">=1":"\u22651", ">=2":"\u22652"}
 for _, r in g.iterrows():
-    a2.annotate(SHORT[str(r.evid)], xy=(r.x,-0.0205), ha="center", va="top",
+    a2.annotate(SHORT[str(r.evid)], xy=(r.x,-0.0196), ha="center", va="top",
                 fontsize=5.6, annotation_clip=False, color="#666666")
 for i in range(0, 18, 3):
     blk = g.iloc[i:i+3]
-    a2.annotate(COMP[str(blk.comp.iloc[0])], xy=(blk.x.mean(),-0.0275),
+    a2.annotate(COMP[str(blk.comp.iloc[0])], xy=(blk.x.mean(),-0.0272),
                 ha="center", va="top", fontsize=6.2,
                 annotation_clip=False, color="#333333")
-    a2.plot([blk.x.min()-0.35, blk.x.max()+0.35], [-0.0235]*2,
+    a2.plot([blk.x.min()-0.35, blk.x.max()+0.35], [-0.0257]*2,
             color="#AAAAAA", lw=0.5, clip_on=False)
 
 lo, hi = -0.018, 0.036
@@ -97,8 +99,8 @@ if BOOT.exists() or BOOT_CSV.exists():
     q1, q3 = np.quantile(d, [0.025, 0.975])
     bx.plot([q1,q3],[0.56,0.56], color="#555555", lw=0.8)
     bx.set_ylim(-0.65, 0.78)
-    bx.annotate(f"Sampling, 95% interval: width = {q3-q1:.3f}",
-                xy=(q3+0.0015,0.60), ha="left", fontsize=6.5, color="#444444")
+    bx.annotate(f"Sampling, 95% interval\nwidth = {q3-q1:.4f}",
+                xy=(q3+0.0012,0.56), ha="left", va="center", fontsize=6.5, color="#444444")
 else:
     bx.annotate(f"bootstrap replicates not found at {BOOT}", xy=(0.5,0.72),
                 xycoords="axes fraction", ha="center", fontsize=6.5, color="#999999")
@@ -108,8 +110,8 @@ for _, r in g.iterrows():
             color=RV if r.rev_minus_am>0 else AM, lw=1.1)
 span = g.rev_minus_am.max() - g.rev_minus_am.min()
 bx.plot([g.rev_minus_am.min(), g.rev_minus_am.max()], [-0.47,-0.47], color="#555555", lw=0.8)
-bx.annotate(f"Across 18 designs: width = {span:.3f}", xy=(g.rev_minus_am.mean(),-0.54),
-            ha="center", fontsize=6.5, color="#444444")
+bx.annotate(f"Across 18 designs: width = {span:.3f}", xy=(0.0012,-0.54),
+            ha="left", va="top", fontsize=6.5, color="#444444")
 bx.axvline(0, color="#333333", lw=0.8)
 bx.set_xlim(lo,hi); bx.set_ylim(-0.65,0.65); bx.set_yticks([])
 bx.set_xlabel("$\\Delta$AUROC (REVEL $-$ AlphaMissense)")

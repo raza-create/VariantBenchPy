@@ -10,7 +10,7 @@ PREDS = ["AlphaMissense","REVEL","CADD","SIFT","PolyPhen-2"]
 ALL6  = PREDS + ["EVE"]
 INK, MID, LIGHT = "#1A1A1A", "#666666", "#AAAAAA"
 
-plt.rcParams.update({"pdf.fonttype":42,"ps.fonttype":42,"font.size":7,
+plt.rcParams.update({"font.family":"DejaVu Sans","pdf.fonttype":42,"ps.fonttype":42,"font.size":7,
     "axes.labelsize":7.5,"xtick.labelsize":7,"ytick.labelsize":7,
     "legend.fontsize":6.5,"axes.linewidth":0.6})
 
@@ -71,13 +71,13 @@ for i,(p,r) in enumerate(cb.iterrows()):
     ax_b.scatter(r["B/LB"],i,s=26,facecolor="white",edgecolor=INK,lw=1.0,zorder=3)
     ax_b.scatter(r["P/LP"],i,s=26,color=INK,zorder=3)
     ax_b.annotate(f"{r['gap_pp']:+.1f}",xy=(101.5,i),va="center",fontsize=6.5,color="#333333")
-ax_b.annotate("Gap (pp)",xy=(101.5,-0.95),fontsize=6.2,color="#555555")
+ax_b.annotate("Gap (pp)",xy=(101.5,-0.62),va="center",fontsize=6.2,color="#555555")
 ax_b.set_yticks(y); ax_b.set_yticklabels([])
 ax_b.invert_yaxis(); ax_b.set_ylim(len(cb)-0.30, -0.85)
 for i, lab in enumerate(cb.index):
     ax_b.annotate(lab, xy=(0.015, i-0.33), xycoords=("axes fraction","data"),
                   ha="left", va="center", fontsize=6.4, color="#333333")
-ax_b.set_xlim(10,108); ax_b.set_xlabel("Variants scored (%)")
+ax_b.set_xlim(10,112); ax_b.set_xlabel("Variants scored (%)")
 ax_b.scatter([],[],s=26,color=INK,label="P/LP")
 ax_b.scatter([],[],s=26,facecolor="white",edgecolor=INK,lw=1.0,label="B/LB")
 ax_b.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2,
@@ -103,16 +103,17 @@ for i, r in dd.reset_index(drop=True).iterrows():
                   ms=5 if sup else 3.6, color=INK, ecolor=MID,
                   elinewidth=1.5 if sup else 0.9, capsize=2, capthick=0.9, zorder=3)
     ps = "$P$ < 0.001" if r["holm"] < 0.001 else f"$P$ = {r['holm']:.3f}"
-    ax_d.annotate(ps, xy=(0.62, i+0.18), xycoords=("axes fraction","data"),
-                  ha="right", va="center", fontsize=6.2, color="#333333")
+    ax_d.annotate(ps, xy=(0.985, i-0.33), xycoords=("axes fraction","data"),
+                  ha="right", va="bottom", fontsize=6.2, color="#333333")
 ax_d.axvline(0, color="#333333", lw=0.8, zorder=2)
 ax_d.set_yticks(y); ax_d.set_yticklabels([])
 for i, lab in enumerate(dd["label"]):
     ax_d.annotate(lab, xy=(0.015, i-0.33), xycoords=("axes fraction","data"),
-                  ha="left", va="bottom", fontsize=6.0, color="#333333")
+                  ha="left", va="bottom", fontsize=6.0, color="#333333", zorder=5,
+                  bbox=dict(boxstyle="square,pad=0.08", fc="white", ec="none"))
 ax_d.tick_params(axis="y", pad=1, length=0)
 ax_d.invert_yaxis(); ax_d.set_ylim(len(dd)-0.30, -0.85); ax_d.set_xlim(-0.032, 0.058)
-ax_d.set_xlabel("$\Delta\Delta$AUROC (change in gap)")
+ax_d.set_xlabel("$\\Delta\\Delta$AUROC (change in gap)")
 for s in ("top","right"): ax_d.spines[s].set_visible(False)
 
 s = strat.loc[PREDS]; y=np.arange(len(s))
@@ -130,10 +131,10 @@ ax_e.invert_yaxis(); ax_e.set_ylim(len(s)-0.30, -0.85)
 ax_e.set_xlim(-0.082,0.016); ax_e.set_xlabel("$\\Delta$AUROC")
 
 r0 = s.iloc[0]
-ax_e.annotate("1 star", xy=(r0["one_star"], -0.72), ha="center", va="bottom",
-              fontsize=6.0, color="#333333", annotation_clip=False)
-ax_e.annotate("\u22652 stars", xy=(r0["two_star"], -0.72), ha="center", va="bottom",
-              fontsize=6.0, color="#333333", annotation_clip=False)
+ax_e.scatter([], [], s=20, facecolor="white", edgecolor=INK, lw=1.0, label="1 star")
+ax_e.scatter([], [], s=20, color=INK, label="\u22652 stars")
+ax_e.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=2, frameon=False,
+            borderaxespad=0.0, handletextpad=0.3, columnspacing=1.2)
 for sp in ("top","right"): ax_e.spines[sp].set_visible(False)
 
 for ax,l in [(ax_a,"a"),(ax_b,"b"),(ax_c,"c"),(ax_d,"d"),(ax_e,"e")]:

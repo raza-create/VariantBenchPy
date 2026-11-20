@@ -12,7 +12,7 @@ GREY = {"CADD":"#4D4D4D","SIFT":"#8A8A8A","PolyPhen-2":"#B8B8B8"}
 COL  = {"AlphaMissense":AM,"REVEL":RV,**GREY}
 INK, MID, LIGHT = "#1A1A1A", "#666666", "#AAAAAA"
 
-plt.rcParams.update({"pdf.fonttype":42,"ps.fonttype":42,"font.size":7,
+plt.rcParams.update({"font.family":"DejaVu Sans","pdf.fonttype":42,"ps.fonttype":42,"font.size":7,
     "axes.labelsize":7.5,"xtick.labelsize":7,"ytick.labelsize":7,
     "legend.fontsize":6.5,"axes.linewidth":0.6})
 
@@ -82,16 +82,10 @@ for i,p in enumerate(P):
     ax_d.scatter(dec.loc[p,"within"], i, s=26, facecolor="white", edgecolor=COL[p],
                  lw=1.2, zorder=3)
     ax_d.scatter(dec.loc[p,"between"], i, s=26, color=COL[p], zorder=3)
-ax_d.annotate(f"{dec.loc['AlphaMissense','within']-dec.loc['REVEL','within']:+.4f}",
-              xy=(0.97,0.23), xycoords="axes fraction", ha="right",
-              fontsize=6.2, color=AM)
-ax_d.annotate(f"{dec.loc['AlphaMissense','between']-dec.loc['REVEL','between']:+.4f}",
-              xy=(0.97,0.13), xycoords="axes fraction", ha="right",
-              fontsize=6.2, color=RV)
 ax_d.set_yticks(y); ax_d.set_yticklabels([]); ax_d.invert_yaxis()
 ax_d.set_ylim(4.65,-0.80)
 for i,p in enumerate(P):
-    ax_d.annotate(p, xy=(0.015,i-0.33), xycoords=("axes fraction","data"),
+    ax_d.annotate(p, xy=(0.015,i-0.45), xycoords=("axes fraction","data"),
                   ha="left", va="center", fontsize=6.0, color="#333333")
 ax_d.set_xlim(0.868,0.978); ax_d.set_xlabel("AUROC over variant pairs")
 ax_d.scatter([],[],s=26,facecolor="white",edgecolor=INK,lw=1.2,label="within-gene")
@@ -112,8 +106,8 @@ ax_e.set_xticks(range(3))
 ax_e.set_xticklabels(["Within\ngene","Between\ngenes","Pooled"], fontsize=6.5)
 ax_e.set_ylim(-0.016,0.018)
 ax_e.set_ylabel("AlphaMissense $-$ REVEL", fontsize=7.0, labelpad=1)
-ax_e.annotate(f"{SHARE:.2f}% of pairs\nare between genes", xy=(0.97,0.06),
-              xycoords="axes fraction", ha="right", fontsize=6.0, color="#555555")
+ax_e.annotate(f"{SHARE:.2f}% of pairs\nare between genes", xy=(0.97,0.97),
+              xycoords="axes fraction", ha="right", va="top", fontsize=6.0, color="#555555")
 for s in ("top","right"): ax_e.spines[s].set_visible(False)
 
 for ax,l in [(ax_a,"a"),(ax_b,"b"),(ax_c,"c"),(ax_d,"d"),(ax_e,"e")]:

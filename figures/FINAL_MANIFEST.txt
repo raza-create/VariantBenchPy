@@ -1,6 +1,6 @@
 FROZEN MAIN FIGURES
 ===================
-Regenerated 2026-11-20 (release v1.0.1). Supersedes the 2026-09-08 set in figures/.
+Regenerated 2026-11-20 (release v1.0.2: layout fixes only; no plotted value changed). Supersedes the 2026-09-08 set in figures/.
 
 Fig/fig2.pdf / .png   Design dependence (18-design grid, Table S3 ordering;
                       2,000-replicate gene-clustered bootstrap)
@@ -17,10 +17,10 @@ All counts and all gene-clustered inference use the frozen Step-10A
 MANE-informed mapping (225,208/15,249 -> 187,155/13,599 -> 53,552/1,981).
 
 SHA256
-4c69eb65e4a916e9c4f817f14b26ae0a00961870feee821ebb7d5d23936090ff  Fig/fig2.pdf
-06a4118b7bb1aaa9f9f3b8e91e6606542429600995e0ea14164635e7e9650dfe  Fig/fig3.pdf
-1f97c3f2bab1c444e6915c18061cd214e484975ce76668223d543145e90d17c0  Fig/fig4.pdf
-1b6bf955901e646dff37e96589167ecf27250ba176808a411bc485e7dbd85524  Fig/fig5.pdf
+a67823fd4bb19331fe7c920f35f65a3f16d009c13cb69af5683232f7e43ac313  Fig/fig2.pdf
+286f829771b01e5e5cd704f3d5b701cdeb4cdcaf805e2efa7da27ef56775411c  Fig/fig3.pdf
+3b8e9015d683ca4d3242366b59feeffd4d655fb0e5bf25ef878933306ceed81e  Fig/fig4.pdf
+cea42f79ba95454447ac8e27d3a056f34e81b58d505e615f985172a1cd99b392  Fig/fig5.pdf
 
 FROZEN SUPPLEMENTARY FIGURES
 ============================
